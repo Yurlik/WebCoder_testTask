@@ -48,8 +48,14 @@ class Router {
 //                    echo 'method exist'.'<br>';
                     $controller = new $class_controller($this->params);
                     $controller->$controllers_action();
+                }else{
+                    View::errorCode(404);
                 }
+            }else{
+                View::errorCode(404);
             }
+        }else{
+            View::errorCode(404);
         }
     }
 

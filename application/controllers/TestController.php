@@ -7,10 +7,20 @@
  */
 namespace application\controllers;
 
-class TestController {
+use application\core\Controller;
+
+class TestController extends Controller {
 
     public function actionTest(){
-        echo 'test';
+//        $this->view->layout = '';
+//        $this->view->path = 'new/new';
+
+        $vars = [
+            'name' => 'weverv',
+            'surname' => 'wrfgergewrgv',
+        ];
+
+        $this->view->render('test title', $vars);
     }
 
 }
