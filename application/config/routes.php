@@ -17,4 +17,15 @@ return [
         'action' => 'new',
     ],
 
+    'division/showall' => [
+        'controller' => 'division',
+        'action' => 'showall',
+    ],
+
+    'division/show/([0-9]+)' => [
+        'controller' => 'division',
+        'action' => 'show',
+        'id' => '$1',
+    ],
+
 ];
