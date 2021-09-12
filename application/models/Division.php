@@ -12,7 +12,7 @@ class Division extends Model
     }
 
 
-    public function getAll(){
+    public static function getAll(){
         $result = Db::qquery('SELECT * FROM division');
         return $result;
     }
@@ -25,14 +25,23 @@ class Division extends Model
 
     public function createDivision(){
 
+        if(!empty($_POST)) {
+            $params['name'] = $_POST['name'];
+            $result = Db::qquery('INSERT INTO division (name) VALUES (:name)', $params);
+
+        }
     }
 
-    public function updateDivision(){
+    public function updateDivision($vars){
+        if(!empty($_POST)) {
+            $params['name'] = $_POST['name'];
+            $result = Db::qquery('UPDATE division SET name=:name WHERE id='.$vars[0], $params);
 
+        }
     }
 
-    public function deleteDivision(){
-
+    public function deleteDivision($vars){
+        $query = Db::qquery('DELETE FROM division WHERE id='.$vars[0]);
     }
 
 
