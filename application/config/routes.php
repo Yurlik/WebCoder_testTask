@@ -3,8 +3,8 @@
 return [
 
     '' => [
-        'controller' => 'test',
-        'action' => 'test',
+        'controller' => 'employee',
+        'action' => 'showall',
     ],
 
     'test/test' => [

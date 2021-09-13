@@ -34,9 +34,28 @@ class Employee extends Model
     }
 
     public function getById($vars){
-        $result = Db::qquery('SELECT * FROM employee WHERE id='.$vars[0]);
+
+        $result = Db::qquery('SELECT employee.id, employee.name, employee.address, employee.email, employee.phone, employee.comment, division.name AS division_name FROM employee INNER JOIN division ON employee.div_id = division.id WHERE employee.id='.$vars[0]);
 
         return $result;
     }
+
+    public function updateEmployee($vars){
+        if(!empty($_POST)) {
+
+            $params = $_POST;
+            $result = Db::qquery('UPDATE employee SET name=:name, email=:email, address=:address, phone=:phone, comment=:comment, div_id=:div_id WHERE id='.$vars[0], $params);
+            if($result){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
+
+    public function deleteEmployee($vars){
+        $query = Db::qquery('DELETE FROM employee WHERE id='.$vars[0]);
+    }
+
 
 }

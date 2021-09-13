@@ -52,4 +52,45 @@ class EmployeeController extends Controller
 
         $this->view->render('Worker', $vars);
     }
+
+    public function actionUpdateEmployee($params){
+
+        if($_POST){
+            $result = $this->model->updateEmployee($params);
+            $result = $this->model->getById($params);
+            $this->view->path = 'employee/show';
+            $vars = [
+                'employ' => $result
+            ];
+
+            $this->view->render('Update Employee', $vars);
+        }else{
+            $divisions = Division::getAll();
+            $result = $this->model->getById($params);
+            $vars = [
+                'employ' => $result,
+                'divisions' => $divisions,
+            ];
+
+            $this->view->render('Update Employee', $vars);
+        }
+
+
+    }
+
+
+    public function actionDeleteEmployee($params){
+
+        $result = $this->model->deleteEmployee($params);
+        //$result = $this->model->getById($params);
+        $result = $this->model->getAll();
+        $this->view->path = 'employee/showall';
+
+        $vars = [
+            'employ' => $result
+        ];
+
+        $this->view->render('Employee', $vars);
+    }
+
 }
