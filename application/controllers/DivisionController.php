@@ -53,9 +53,9 @@ class DivisionController extends Controller
 
         $result = $this->model->updateDivision($params);
         $result = $this->model->getById($params);
-
-        $this->view->path = 'division/show';
-
+        if($_POST){
+            $this->view->path = 'division/show';
+        }
         $vars = [
             'div' => $result
         ];

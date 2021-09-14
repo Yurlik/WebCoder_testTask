@@ -14,6 +14,16 @@
 </header>
 
 <body>
+<head>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="/division/showall">Divisions</a></li>
+                <li class="nav-item"><a class="nav-link" href="/employee/showall">Workers</a></li>
+            </ul>
+        </nav>
+    </div>
+</head>
     <div class="container">
         <?php echo $content; ?>
     </div>
